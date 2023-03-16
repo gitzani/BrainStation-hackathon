@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect, useRef } from "react";
+import { Configuration, OpenAIApi } from "openai";
+const axios = require("axios");
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    const [avatar, setAvatar] = useState("");
+    const [character, setCharacter] = useState("");
+    const [charId, setCharId] = useState("");
+   
 
+
+
+return (
+    <div className="App">
+        <header className="App-header">
+            <h1 className="App-title">Creater Your D&D Character</h1>
+        </header>
+        <div>
+         <img src={avatar} className="App-logo" alt="Avatar" />
+        </div>
+    </div>
+);
+}
 export default App;
