@@ -1,85 +1,70 @@
-require("dotenv").config();
-const express = require("express");
-const cors = require("cors");
-const fs = require("fs");
-const path = require("path");
-const { Configuration } = require("openai");
-//const { ImagesApi } = require("openai");
-
-
+const express = require('express');
 const app = express();
+const cors = require("cors");
+const dataPath = "./data.json";
+const fs = require('fs');
 
-// Define server configuration from ENV file
+require('dotenv').config();
+
 const { PORT, OPENAI_API_KEY, BACKEND_URL, CLIENT_URL } = process.env;
-
 console.log("port", PORT, "apikey" , OPENAI_API_KEY, "backURL",  BACKEND_URL, "clientURL", CLIENT_URL)
 
-
-// Define CORS from ENV file
 app.use(
   cors({
     origin: [CLIENT_URL, `${BACKEND_URL}:${PORT}`],
   })
 );
 
-// Define the path to the data.json file
-const dataPath = path.join(__dirname, "./data/data.json");
+const port = process.env.PORT || process.argv[2] || 8080;
 
-// Define the OpenAI configuration
-const openaiConfiguration = new Configuration({
-  apiKey: OPENAI_API_KEY,
- 
+app.use(express.json());
+
+if (!fs.existsSync(dataPath)) {
+  fs.writeFileSync(dataPath, JSON.stringify([]));
+}
+
+const { Configuration, OpenAIApi } = require('openai');
+const configuration = new Configuration({
+    organization: "org-GUBFw2dZ81gYq0LK56Z1uQqn",
+    apiKey: process.env.OPENAI_API_KEY,
 });
+const openai = new OpenAIApi(configuration);
 
-// Define the OpenAI Images API
-//const imagesApi = new ImagesApi(openaiConfiguration);
+const axios = require('axios');
+console.log(`OPENAI_API_KEY = ${OPENAI_API_KEY}`);
 
-// Define a route handler that generates the images and saves them to the server
-app.post("/generate-image", async (req, res) => {
+app.post('/generate-image', async (req, res) => {
+  const { prompt } = req.body;
+
   try {
-    const { data } = req.body;
-    const charinput = JSON.stringify(data);
-    const prompt = `Create an image of ${charinput}`;
-    const n = 1;
-    const size = "300x300";
-
-    const response = await imagesApi.generateImages({
+    const response = await axios.post(
+      'https://api.openai.com/v1/images/generations',
+      {
+        "model": "image-alpha-001",
+        "prompt": `${prompt}`,
+        "n": 1,
+        "size": '1024x1024',
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${OPENAI_API_KEY}`,
+          'organization': "org-GUBFw2dZ81gYq0LK56Z1uQqn",
+        }
+      }
+    );
+    console.log(response.data);
+    const result = {
       prompt,
-      n,
-      size,
-    });
-
-    const imagesDir = path.join(__dirname, "../images");
-    const images = [];
-
-    if (!fs.existsSync(imagesDir)) {
-      fs.mkdirSync(imagesDir);
-    }
-
-    response.data.forEach((image, index) => {
-      const id = `image${Date.now()}-${index}`;
-      const imagePath = path.join(imagesDir, `${id}.jpg`);
-      const stream = fs.createWriteStream(imagePath);
-      stream.write(image);
-      stream.end();
-      images.push({
-        id,
-        path: imagePath,
-        data,
-      });
-    });
-
-    const jsonData = JSON.stringify({ images });
-
-    fs.writeFileSync(dataPath, jsonData);
-
-    res.json({ success: true, message: "Image generated and saved successfully" });
+      url: response.data.data[0].url,
+    };
+    res.status(200).json(result);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, message: "Failed to generate and save image" });
+    console.error(error.response.data); 
+    res.status(500).send('Error generating image.');
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
 });
