@@ -1,0 +1,128 @@
+@use "../partials/mixins" as *;
+@use "../partials/colors" as *;
+@use "../partials/fonts" as *;
+
+.nav {
+  background-image: url(../assets/images/DNDBKG.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  height: 40vw;
+  padding: 1rem;
+  margin: 1rem;
+
+
+
+  @include centered-column;
+
+  &__logo {
+    height: 25px;
+    margin: 1rem 0;
+  }
+  &__avatar {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    // background-image: url("../../assets/images/Mohan-muruge.jpg");
+    background-size: cover;
+  }
+  &__content {
+    @include centered-column;
+    padding: 0.5rem;
+    justify-content: space-between;
+    width: 90vw;
+    @include for--tablet {
+      flex-direction: row;
+    }
+    @include for--desktop {
+      width: 80vw;
+      max-width: 1280px;
+    }
+  }
+  &__input--container {
+    margin-top: 20rem;
+    // display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    @include for--tablet {
+      justify-content: flex-end;
+    }
+  }
+
+  &__button {
+    // background: url("../../assets/images/Icons/upload.svg") no-repeat 0.5rem
+      // center;
+    width: 100%;
+    min-width: 150px;
+    height: 40px;
+    margin: 1rem 0 0 0;
+    background-color: transparent;
+    border-radius: 4px;
+    border: 1px solid #831919;
+    color: $BrainFlix-White;
+    font-weight: 700;
+    align-content: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    color: #831919;
+    &:hover {
+      transition: 0.5s;
+      transition-timing-function: ease-in-out;
+      background-color: #801b1b;
+      color: #b39b00;
+    }
+    @include for--tablet {
+      display: none;
+    }
+    &--horizontal {
+      @media (max-width: 768px) {
+        display: none;
+      }
+      // background: url("../../assets/images/Icons/upload.svg") no-repeat 0.5rem
+      //   center;
+      min-width: 150px;
+      height: 40px;
+      margin: 0 1rem;
+      background-color: $BrainFlix-Blue;
+      border-radius: 4px;
+      border: none;
+      color: $BrainFlix-White;
+      font-weight: 700;
+      align-content: center;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      text-decoration: none;
+      &:hover {
+        transition: 0.5s;
+        transition-timing-function: ease-in-out;
+        background-color: #801b1b;
+        color: #b39b00;
+      }
+      @include for--desktop {
+        margin: 0 2rem 0 0.5rem;
+      }
+    }
+  }
+  &__input-el {
+    // background: url("../../assets/images/Icons/search.svg") no-repeat 0.5rem center;
+    background-color: $BrainFlix-Alabaster;
+    padding-left: 30px;
+    border: 1px solid $BrainFlix-Silver;
+    height: 36px;
+    border-radius: 4px;
+    width: 75%;
+    margin-right: 1rem;
+    color: $BrainFlix-DarkBlack;
+
+    &::placeholder {
+      color: $BrainFlix-DarkBlack;
+    }
+    @include for--tablet {
+      width: 206px;
+    }
+  }
+}
