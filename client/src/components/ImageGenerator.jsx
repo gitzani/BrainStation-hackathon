@@ -7,7 +7,7 @@ function ImageGenerator() {
   const [name, setName] = useState("");
   const [race, setRace] = useState("");
   const [weapon, setWeapon] = useState("");
-  const [strength, setStrength] = useState("");
+  const [skill, setskill] = useState("");
   const [attack, setAttack] = useState("");
   const [experience, setExperience] = useState("");
   const [age, setAge] = useState("");
@@ -20,7 +20,7 @@ function ImageGenerator() {
       name,
       race,
       weapon,
-      strength,
+      skill,
       attack,
       experience,
       age
@@ -52,8 +52,8 @@ function ImageGenerator() {
     setWeapon(event.target.value);
   };
 
-  const handleStrengthChange = (event) => {
-    setStrength(event.target.value);
+  const handleskillChange = (event) => {
+    setskill(event.target.value);
   };
 
   const handleAttackChange = (event) => {
@@ -111,14 +111,14 @@ function ImageGenerator() {
         />
         <br />
 
-        <label className="form__label" htmlFor="strength">Strength:</label>
+        <label className="form__label" htmlFor="skill">Skill:</label>
         <input
           placeholder="eg. Intelligence, Brute Force, Magic, etc..."
           type="text"
-          id="strength"
-          name="strength"
-          value={strength}
-          onChange={handleStrengthChange}
+          id="skill"
+          name="skill"
+          value={skill}
+          onChange={handleskillChange}
           required
           className="placeholder__animated charPage__input"
         />

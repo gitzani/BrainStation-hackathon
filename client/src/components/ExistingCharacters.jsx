@@ -17,7 +17,7 @@ function CharacterPage() {
           <h2>{character.prompt.name}</h2>
           <p>Race: {character.prompt.race}</p>
           <p>Weapon: {character.prompt.weapon}</p>
-          <p>Strength: {character.prompt.strength}</p>
+          <p>Skill: {character.prompt.skill}</p>
           <p>Attack: {character.prompt.attack}</p>
           <p>Experience: {character.prompt.experience}</p>
           <p>Age: {character.prompt.age}</p>

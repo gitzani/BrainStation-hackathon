@@ -1,12 +1,11 @@
 [
-
   {
     "id": "dk2ywncai",
     "prompt": {
       "name": "Richard",
       "race": "Paladin",
       "weapon": "Sword",
-      "strength": "Healing",
+      "skill": "Healing",
       "attack": "20/20",
       "experience": "65/100",
       "age": "300"
@@ -19,11 +18,24 @@
       "name": "Zed",
       "race": "Dragonborn",
       "weapon": "Great Axe",
-      "strength": "Strenght",
+      "skill": "strength",
       "attack": "18/20",
       "experience": "10/100",
       "age": "30"
     },
     "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-3SIupZV3cE6kjxBNeZ5Oi2Ml/user-9mxl86A2gNZJ2VtiV8NztA53/img-0fFsVyf78WddEQn2pLPCMyA7.png?st=2023-03-17T18%3A04%3A28Z&se=2023-03-17T20%3A04%3A28Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-03-17T17%3A15%3A10Z&ske=2023-03-18T17%3A15%3A10Z&sks=b&skv=2021-08-06&sig=jsj/c1dG/c9bBfsVTMQL1J5wv8HgXUPWHZH4J67JqoM%3D"
+  },
+  {
+    "id": "kuithebsr",
+    "prompt": {
+      "name": "Alie",
+      "race": "Goblin",
+      "weapon": "Hammer",
+      "skill": "Magic",
+      "attack": "20/20",
+      "experience": "80/100",
+      "age": "85"
+    },
+    "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-3SIupZV3cE6kjxBNeZ5Oi2Ml/user-9mxl86A2gNZJ2VtiV8NztA53/img-fx3Pyd5Kzr9jh9fnQzNDNCiB.png?st=2023-03-17T18%3A18%3A44Z&se=2023-03-17T20%3A18%3A44Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-03-17T17%3A15%3A05Z&ske=2023-03-18T17%3A15%3A05Z&sks=b&skv=2021-08-06&sig=FmCqg4epNQgdOcR7m0lOEws1pyYGbe0oe0/yBxnMMNA%3D"
   }
 ]
