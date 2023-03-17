@@ -75,7 +75,9 @@
       color: #b39b00;
     }
     @include for--tablet {
-      display: none;
+      display: flex;
+      flex-direction: row;
+      
     }
     &--horizontal {
       @media (max-width: 768px) {
@@ -118,9 +120,7 @@
     margin-right: 1rem;
     color: $BrainFlix-DarkBlack;
 
-    &::placeholder {
-      color: $BrainFlix-DarkBlack;
-    }
+
     @include for--tablet {
       width: 206px;
     }

@@ -12,7 +12,7 @@ function CharacterPage() {
 
   return (
     <div className='drop__margin'>
-      {characters.map(character => (
+      {characters.slice().reverse().map(character => (
         <div className="charPage" key={character.id}>
           <h2>{character.prompt.name}</h2>
           <p>Race: {character.prompt.race}</p>
